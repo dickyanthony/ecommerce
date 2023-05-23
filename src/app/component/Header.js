@@ -18,17 +18,24 @@ const Header = () => {
   const provider = new GoogleAuthProvider();
   const login = async () => {
     if (!userInfo) {
-      const {
-        user: { refreshToken, providerData },
-      } = await signInWithPopup(firebaseAuth, provider);
-      console.log(providerData);
-      dispatch(get(providerData[0]));
-      localStorage.setItem("userInfo", JSON.stringify(providerData[0]));
+      try {
+        const {
+          user: { refreshToken, providerData },
+        } = await signInWithPopup(firebaseAuth, provider);
+        console.log(providerData);
+        dispatch(get(providerData[0]));
+        localStorage.setItem("userInfo", JSON.stringify(providerData[0]));
+      } catch (error) {
+        if (error.code === "auth/popup-closed-by-user") {
+          console.log("Authentication cancelled by user");
+        } else {
+          console.log("Authentication error:", error);
+        }
+      }
     } else {
       setIsMenu(!isMenu);
     }
   };
-
   const logout = () => {
     setIsMenu(false);
     localStorage.clear();
@@ -42,7 +49,10 @@ const Header = () => {
   return (
     <header className=" z-50 w-screen p-6 px-16 bg-primary">
       <AnimatePresence mode="wait">
-        <div className="hidden md:flex w-full h-full justify-between">
+        <div
+          key="desktop"
+          className="hidden md:flex w-full h-full justify-between"
+        >
           <Link href={"team"} className="flex items-center gap-2">
             <p className="text-stone-900 text-xl font-bold">BajuPedia</p>
           </Link>
@@ -107,7 +117,10 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-between md:hidden w-full h-full ">
+        <div
+          key="mobile"
+          className="flex items-center justify-between md:hidden w-full h-full "
+        >
           <div
             className="relative flex items-center justify-center"
             onClick={() => {}}
