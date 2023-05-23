@@ -1,3 +1,4 @@
 import Header from "./Header";
+import { MotionComponent } from "./MotionImg";
 
-export { Header };
+export { Header, MotionComponent };

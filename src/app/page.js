@@ -1,11 +1,11 @@
 import React from "react";
-import Header from "./component/Header";
-import Dashboard from "./screen/dashboard";
+
+import MainContainer from "./component/MainContainer";
 
 const page = () => {
   return (
-    <div>
-      <Dashboard />
+    <div className="mt-14 md:mt-20 px-4 md:px-16 py-4 w-full">
+      <MainContainer />
     </div>
   );
 };

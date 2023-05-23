@@ -17,5 +17,5 @@ export const getUser = createSlice({
   },
 });
 
-export const { get } = getUser.actions;
+export const { get, reset } = getUser.actions;
 export default getUser.reducer;
