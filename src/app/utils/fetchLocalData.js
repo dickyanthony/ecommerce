@@ -4,7 +4,7 @@ export const fetchUser = () => {
   if (typeof window !== "undefined") {
     userInfo =
       localStorage.getItem("userInfo") !== null
-        ? JSON.stringify(localStorage.getItem("userInfo"))
+        ? JSON.parse(localStorage.getItem("userInfo"))
         : null;
   }
 

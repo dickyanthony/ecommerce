@@ -64,7 +64,7 @@ const Header = () => {
                       className="w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute top-12 right-0"
                     >
                       <p className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-stone-900 text-base">
-                        Tambah Barang
+                        Hi {userInfo.username}
                       </p>
                       <p
                         onClick={logout}
@@ -81,6 +81,7 @@ const Header = () => {
                   className="w-10 min-w-[40px] h-210 min-h-[40px] drop-shadow-xl cursor-pointer"
                 >
                   <Image
+                    disabledEffect
                     onClick={() => router.push("/screen/auth")}
                     src={people1}
                     alt="People 1"
@@ -126,7 +127,7 @@ const Header = () => {
                     className="w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute top-12 right-0"
                   >
                     <p className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-stone-900 text-base">
-                      Tambah Barang
+                      Hi {userInfo.username}
                     </p>
                     <p
                       onClick={logout}
@@ -143,6 +144,7 @@ const Header = () => {
                 className="w-10 min-w-[40px] h-210 min-h-[40px] drop-shadow-xl cursor-pointer"
               >
                 <Image
+                  disabledEffect
                   onClick={() => router.push("/screen/auth")}
                   src={people1}
                   alt="People 1"

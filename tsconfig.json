@@ -24,11 +24,12 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/app/screen/auth/JwtContext.js",
+    "src/app/screen/auth/JwtCoantext.js",
     "src/app/screen/auth/useAuthContext.js",
     "src/app/screen/auth/AuthLoginForm.js",
     "src/app/screen/detailproduct/layout.js",
-    "src/app/screen/dashboard/layout.js"
+    "src/app/screen/dashboard/layout.js",
+    "src/app/screen/register/AuthRegisterForm.js"
   ],
   "exclude": ["node_modules"]
 }
