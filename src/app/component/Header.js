@@ -1,12 +1,12 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { FaShoppingBag } from "react-icons/fa";
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import people1 from "./../assets/img/people1.png";
+import { FaShoppingBag } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from "../firebase.config";
-import Image from "next/image";
-import Link from "next/link";
 
 import { get, reset } from "../redux/userReducer";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
@@ -22,7 +22,7 @@ const Header = () => {
         const {
           user: { refreshToken, providerData },
         } = await signInWithPopup(firebaseAuth, provider);
-        console.log(providerData);
+
         dispatch(get(providerData[0]));
         localStorage.setItem("userInfo", JSON.stringify(providerData[0]));
       } catch (error) {
@@ -42,10 +42,6 @@ const Header = () => {
     dispatch(reset());
   };
 
-  useEffect(() => {
-    console.log("effect====>", userInfo);
-  }, [userInfo]);
-
   return (
     <header className=" z-50 w-screen p-6 px-16 bg-primary">
       <AnimatePresence mode="wait">
@@ -53,7 +49,7 @@ const Header = () => {
           key="desktop"
           className="hidden md:flex w-full h-full justify-between"
         >
-          <Link href={"team"} className="flex items-center gap-2">
+          <Link href={""} className="flex items-center gap-2">
             <p className="text-stone-900 text-xl font-bold">BajuPedia</p>
           </Link>
           <div className="flex items-center gap-8">
