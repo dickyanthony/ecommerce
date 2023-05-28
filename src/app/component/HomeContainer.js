@@ -1,6 +1,5 @@
-"use client";
 import React, { useState, useEffect } from "react";
-import { motion, useMotionValue } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import { bajuBiru, bajuHitam, bajuMerah } from "../assets/img";
 import { MotionComponent } from "./MotionImg";
 import { TITLE } from "../constant";
@@ -59,9 +58,13 @@ const HomeContainer = () => {
       window.removeEventListener("mousemove", updateRotation);
     };
   }, []);
+
+  const scale = useTransform(rotateX, [-maxRotation, maxRotation], [0.6, 1]);
+
   const handleShirtClick = (shirt) => {
     setWhichShirt(shirt);
   };
+
   return (
     <section
       className="grid grid-cols-1 md:grid-cols-2 gap-2 w-full "
@@ -103,6 +106,7 @@ const HomeContainer = () => {
             style={{
               rotateX: rotateX,
               rotateY: rotateY,
+              scale: scale,
             }}
           />
           {arrayShirt.map((shirt) => (

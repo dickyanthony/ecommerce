@@ -1,3 +1,4 @@
+import React from "react";
 import { memo } from "react";
 import { Box } from "@mui/material";
 import { StyledRootScrollbar, StyledScrollbar } from "./styles";

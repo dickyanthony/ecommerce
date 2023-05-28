@@ -41,7 +41,7 @@ const MainContainer = () => {
               </div>
             </div>
           </section>
-          <div className="w-full">
+          <div className="w-full" key="Shop">
             <Shop />
           </div>
         </AnimatePresence>

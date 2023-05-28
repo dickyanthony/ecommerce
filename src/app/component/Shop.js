@@ -30,9 +30,9 @@ export default function Shop() {
         }
         const data = await response.json();
         data.forEach((product) => {
-          product.colors = JSON.parse(product.colors); // Parse the colors property
+          product.colors = JSON.parse(product.colors);
         });
-        setProducts(data); // Update the state with the fetched data
+        setProducts(data);
       } catch (error) {
         console.error("Error fetching products:", error);
       }

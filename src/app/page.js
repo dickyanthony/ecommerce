@@ -1,13 +1,15 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 
-import MainContainer from "./component/MainContainer";
+import { useRouter } from "next/navigation";
 
 const page = () => {
-  return (
-    <div className="mt-14 md:mt-20 px-4 md:px-16 py-4 w-full flex items-center justify-center">
-      <MainContainer />
-    </div>
-  );
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("/screen/auth");
+  }, []);
+  return null;
 };
 
 export default page;

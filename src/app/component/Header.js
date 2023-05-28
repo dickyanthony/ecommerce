@@ -1,45 +1,24 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
+import Image from "./Image";
 import Link from "next/link";
-import people1 from "./../assets/img/people1.png";
+import { useRouter } from "next/navigation";
 import { FaShoppingBag } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { app } from "../firebase.config";
-
-import { get, reset } from "../redux/userReducer";
+import { reset } from "../redux/userReducer";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import people1 from "./../assets/img/people1.png";
 const Header = () => {
+  const router = useRouter();
+  const dispatch = useAppDispatch();
   const [isMenu, setIsMenu] = useState(false);
   const userInfo = useAppSelector((state) => state.userReducer.user);
-  const dispatch = useAppDispatch();
-  const firebaseAuth = getAuth(app);
-  const provider = new GoogleAuthProvider();
-  const login = async () => {
-    if (!userInfo) {
-      try {
-        const {
-          user: { refreshToken, providerData },
-        } = await signInWithPopup(firebaseAuth, provider);
 
-        dispatch(get(providerData[0]));
-        localStorage.setItem("userInfo", JSON.stringify(providerData[0]));
-      } catch (error) {
-        if (error.code === "auth/popup-closed-by-user") {
-          console.log("Authentication cancelled by user");
-        } else {
-          console.log("Authentication error:", error);
-        }
-      }
-    } else {
-      setIsMenu(!isMenu);
-    }
-  };
   const logout = () => {
     setIsMenu(false);
     localStorage.clear();
     dispatch(reset());
+    router.push("/screen/auth");
   };
 
   return (
@@ -74,7 +53,7 @@ const Header = () => {
                   <motion.img
                     whileTap={{ scale: 0.6 }}
                     src={userInfo.photoURL}
-                    onClick={login}
+                    onClick={() => setIsMenu(!isMenu)}
                     className="w-10 min-w-[40px] h-210 min-h-[40px] drop-shadow-xl cursor-pointer"
                   />
                   {isMenu && (
@@ -102,7 +81,7 @@ const Header = () => {
                   className="w-10 min-w-[40px] h-210 min-h-[40px] drop-shadow-xl cursor-pointer"
                 >
                   <Image
-                    onClick={login}
+                    onClick={() => router.push("/screen/auth")}
                     src={people1}
                     alt="People 1"
                     width={40}
@@ -136,7 +115,7 @@ const Header = () => {
                 <motion.img
                   whileTap={{ scale: 0.6 }}
                   src={userInfo.photoURL}
-                  onClick={login}
+                  onClick={() => setIsMenu(!isMenu)}
                   className="w-10 min-w-[40px] h-210 min-h-[40px] drop-shadow-xl cursor-pointer"
                 />
                 {isMenu && (
@@ -164,7 +143,7 @@ const Header = () => {
                 className="w-10 min-w-[40px] h-210 min-h-[40px] drop-shadow-xl cursor-pointer"
               >
                 <Image
-                  onClick={login}
+                  onClick={() => router.push("/screen/auth")}
                   src={people1}
                   alt="People 1"
                   width={40}

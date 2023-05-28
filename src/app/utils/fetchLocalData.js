@@ -1,11 +1,12 @@
-"use client";
 export const fetchUser = () => {
-  if (typeof window !== "undefined" && window.localStorage) {
-    const userInfo =
-      localStorage.getItem("userInfo") !== undefined
-        ? JSON.parse(localStorage.getItem("userInfo"))
+  let userInfo = null;
+
+  if (typeof window !== "undefined") {
+    userInfo =
+      localStorage.getItem("userInfo") !== null
+        ? JSON.stringify(localStorage.getItem("userInfo"))
         : null;
-    return userInfo;
   }
-  return null;
+
+  return userInfo;
 };

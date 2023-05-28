@@ -115,7 +115,7 @@ export default function ProductDetailsCarousel({ product }) {
   const handleNext = () => {
     carousel2.current?.slickNext();
   };
-  console.log(product.images.length);
+
   const renderLargeImg = (
     <Box
       sx={{ mb: 3, borderRadius: 2, overflow: "hidden", position: "relative" }}

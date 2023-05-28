@@ -59,14 +59,15 @@ export default function detailproduct() {
     const fetchProduct = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`/api/product/${routerId}`); // Use the dynamic ID in the API endpoint URL
+        const response = await fetch(
+          `/api/product/productDetail?id=${routerId}`
+        ); // Use the dynamic ID in the API endpoint URL
         const data = await response.json();
-        // Process the returned data
+
         console.log(data);
         setProduct(data);
         setIsLoading(false);
       } catch (error) {
-        // Handle any errors
         console.error("Error fetching product data:", error);
         setIsLoading(false);
       }

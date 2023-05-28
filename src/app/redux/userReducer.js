@@ -12,6 +12,7 @@ export const getUser = createSlice({
   reducers: {
     reset: () => initialState,
     get: (state, action) => {
+      console.log("action===>", action);
       state.user = action.payload;
     },
   },

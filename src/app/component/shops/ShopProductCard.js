@@ -84,7 +84,6 @@ export default function ShopProductCard({ product }) {
           href={`screen/detailproduct/${id}`}
           color="inherit"
           variant="subtitle2"
-          noWrap
         >
           {name}
         </Link>
