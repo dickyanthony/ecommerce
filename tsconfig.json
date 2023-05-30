@@ -58,7 +58,9 @@
     "src/app/screen/checkout/page.js",
     "src/app/theme/palette.js",
     "src/app/theme/customShadows.js",
-    "src/app/screen/register/layout.js"
+    "src/app/screen/register/layout.js",
+    "src/app/component/checkout/billing/CheckoutBillingNewAddressForm.js",
+    "src/app/component/checkout/billing/CheckoutBillingAddress.js"
   ],
   "exclude": ["node_modules"]
 }
