@@ -6,7 +6,6 @@ export async function GET(req, res) {
   let query = "SELECT * FROM product";
   const [results] = await connection.query(query);
 
-  console.log(`results`, results);
   connection.end();
   return new Response(JSON.stringify(results));
 }

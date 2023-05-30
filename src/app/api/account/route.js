@@ -11,8 +11,7 @@ export async function POST(req, res) {
     const connection = await mysql.createConnection(DATABASECONFIG);
     const query = "SELECT * FROM account WHERE username = ? AND password = ?";
     const [results] = await connection.query(query, [username, password]);
-    connection.end();
-
+    connection.destroy();
     if (results.length > 0) {
       return new Response(JSON.stringify(results[0]), {
         status: 200,
@@ -26,8 +25,7 @@ export async function POST(req, res) {
       );
     }
   } catch (error) {
-    console.error(error);
-    return new Response(JSON.stringify(email), {
+    return new Response(JSON.stringify(error), {
       status: 500,
     });
   }

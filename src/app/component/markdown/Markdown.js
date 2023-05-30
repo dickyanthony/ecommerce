@@ -8,7 +8,7 @@ import rehypeHighlight from "rehype-highlight";
 // @mui
 import { Link, Typography, Divider } from "@mui/material";
 //
-import Image from "../image";
+import MuiImage from "../MuiImage";
 //
 import StyledMarkdown from "./styles";
 
@@ -42,7 +42,7 @@ const components = {
   p: ({ ...props }) => <Typography paragraph {...props} />,
   hr: ({ ...props }) => <Divider sx={{ my: 3 }} {...props} />,
   img: ({ ...props }) => (
-    <Image
+    <MuiImage
       alt={props.alt}
       ratio="16/9"
       sx={{ borderRadius: 2, my: 5 }}

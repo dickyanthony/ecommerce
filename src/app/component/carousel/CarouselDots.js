@@ -34,13 +34,12 @@ const StyledRoot = styled(Box, {
 }));
 
 const StyledDot = styled("span")(({ theme }) => ({
-  width: 8,
-  height: 8,
+  width: "8px",
+  height: "8px",
   borderRadius: "50%",
-  transition: theme.transitions.create("width", {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.short,
-  }),
+  transitionProperty: "width",
+  transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+  transitionDuration: "250ms",
 }));
 
 // ----------------------------------------------------------------------

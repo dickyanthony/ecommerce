@@ -88,40 +88,19 @@ const COMMON = {
   },
 };
 
-export default function palette(themeMode) {
-  const light = {
-    ...COMMON,
-    mode: "light",
-    text: {
-      primary: GREY[800],
-      secondary: GREY[600],
-      disabled: GREY[500],
-    },
-    background: { paper: "#FFFFFF", default: "#FFFFFF", neutral: GREY[200] },
-    action: {
-      ...COMMON.action,
-      active: GREY[600],
-    },
-  };
+const palette = {
+  ...COMMON,
+  mode: "light",
+  text: {
+    primary: GREY[800],
+    secondary: GREY[600],
+    disabled: GREY[500],
+  },
+  background: { paper: "#FFFFFF", default: "#FFFFFF", neutral: GREY[200] },
+  action: {
+    ...COMMON.action,
+    active: GREY[600],
+  },
+};
 
-  const dark = {
-    ...COMMON,
-    mode: "dark",
-    text: {
-      primary: "#FFFFFF",
-      secondary: GREY[500],
-      disabled: GREY[600],
-    },
-    background: {
-      paper: GREY[800],
-      default: GREY[900],
-      neutral: alpha(GREY[500], 0.16),
-    },
-    action: {
-      ...COMMON.action,
-      active: GREY[500],
-    },
-  };
-
-  return themeMode === "light" ? light : dark;
-}
+export default palette;

@@ -17,6 +17,7 @@ import Iconify from "../iconify";
 
 import ProductDetailsReviewList from "./ProductDetailsReviewList";
 import ProductDetailsReviewNewDialog from "./ProductDetailsNewReviewForm";
+import palette from "../../theme/palette";
 
 export default function ProductDetailsReview({ product }) {
   const { totalRating, totalReview, ratings } = product;
@@ -69,11 +70,11 @@ export default function ProductDetailsReview({ product }) {
           sx={{
             p: 3,
             py: { md: 5 },
-            borderLeft: (theme) => ({
-              md: `dashed 1px ${theme.palette.divider}`,
+            borderLeft: () => ({
+              md: `dashed 1px ${palette.divider}`,
             }),
             borderRight: (theme) => ({
-              md: `dashed 1px ${theme.palette.divider}`,
+              md: `dashed 1px ${palette.divider}`,
             }),
           }}
         >

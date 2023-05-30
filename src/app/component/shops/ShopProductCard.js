@@ -1,12 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import { Box, Card, Stack, Fab } from "@mui/material";
-
 import { fCurrency } from "../../utils/formatNumber";
+import { useRouter } from "next/navigation";
+import { useAppSelector } from "../../redux/hooks";
+import { ColorPreview } from "../color-utils";
 import Iconify from "../iconify";
 import Label from "../label";
-import { ColorPreview } from "../color-utils";
-import Image from "../Image";
+import MuiImage from "../MuiImage";
 
 // ----------------------------------------------------------------------
 
@@ -22,8 +23,44 @@ export default function ShopProductCard({ product }) {
     sizes,
     priceSale,
   } = product;
+  const router = useRouter();
+  const userInfo = useAppSelector((state) => state.userReducer.user);
 
-  const handleAddCart = async () => {};
+  const handleAddCart = async () => {
+    if (!userInfo) {
+      router.push("/screen/login");
+    } else {
+      const parseSize = JSON.parse(sizes);
+      const data = {
+        account_id: userInfo.id,
+        product_id: id,
+        price: price,
+        quantity: 1,
+        size: parseSize[0],
+      };
+      try {
+        const response = await fetch("/api/cart", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+          // Handle the successful response
+          console.log(result.message);
+        } else {
+          // Handle the error response
+          console.error("Error adding product to cart.");
+        }
+      } catch (error) {
+        console.error(error);
+        // Handle the error
+      }
+    }
+  };
 
   return (
     <Card
@@ -71,7 +108,7 @@ export default function ShopProductCard({ product }) {
           <Iconify icon="ic:round-add-shopping-cart" />
         </Fab>
 
-        <Image
+        <MuiImage
           disabledEffect
           alt={name}
           src={cover}

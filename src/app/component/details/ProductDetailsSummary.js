@@ -24,6 +24,7 @@ import Iconify from "../iconify";
 import { IncrementerButton } from "../custom-input";
 import { ColorSinglePicker } from "../color-utils";
 import FormProvider, { RHFSelect } from "../hook-form";
+import palette from "../../theme/palette";
 
 // ----------------------------------------------------------------------
 
@@ -117,9 +118,7 @@ export default function ProductDetailsSummary({
       <Stack
         spacing={3}
         sx={{
-          p: (theme) => ({
-            md: theme.spacing(5, 5, 0, 2),
-          }),
+          padding: "40px 40px 0 16px",
         }}
         {...other}
       >
@@ -278,7 +277,7 @@ export default function ProductDetailsSummary({
           </Button>
 
           <Button
-            className="bg-[#fda92d]"
+            style={{ backgroundColor: `${palette.primary.main}` }}
             fullWidth
             size="large"
             type="submit"

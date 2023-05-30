@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Box } from "@mui/material";
@@ -7,7 +8,7 @@ import { transparent, placeholder } from "../assets/img";
 
 // ----------------------------------------------------------------------
 
-const Image = ({
+const MuiImage = ({
   ratio,
   disabledEffect = false,
   effect = "blur",
@@ -73,4 +74,4 @@ const Image = ({
   );
 };
 
-export default Image;
+export default MuiImage;

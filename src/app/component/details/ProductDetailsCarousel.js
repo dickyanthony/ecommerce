@@ -3,17 +3,18 @@ import { useState, useRef, useEffect } from "react";
 import { useTheme, styled } from "@mui/material/styles";
 import { Box, alpha } from "@mui/material";
 import { bgGradient } from "../../utils/cssStyles";
-import Image from "../image";
+import MuiImage from "../MuiImage";
 import Carousel, { CarouselArrowIndex } from "../carousel";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import palette from "../../theme/palette";
 
 const THUMB_SIZE = 64;
 
 const StyledThumbnailsContainer = styled("div", {
   shouldForwardProp: (prop) => prop !== "length",
 })(({ length, theme }) => ({
-  margin: theme.spacing(0, "auto"),
+  margin: "0 auto",
   position: "relative",
 
   "& .slick-slide": {
@@ -22,7 +23,7 @@ const StyledThumbnailsContainer = styled("div", {
       opacity: 1,
     },
     "& > div": {
-      padding: theme.spacing(0, 0.75),
+      padding: "0 4px",
     },
   },
 
@@ -42,8 +43,8 @@ const StyledThumbnailsContainer = styled("div", {
     "&:before, &:after": {
       ...bgGradient({
         direction: "to left",
-        startColor: `${alpha(theme.palette.background.default, 0)} 0%`,
-        endColor: `${theme.palette.background.default} 100%`,
+        startColor: `${alpha(palette.background.default, 0)} 0%`,
+        endColor: `${palette.background.default} 100%`,
       }),
       top: 0,
       zIndex: 9,
@@ -122,7 +123,7 @@ export default function ProductDetailsCarousel({ product }) {
     >
       <Carousel {...carouselSettings1} asNavFor={nav2} ref={carousel1}>
         {product.images.map((img) => (
-          <Image
+          <MuiImage
             disabledEffect
             key={img}
             alt="product"
@@ -146,7 +147,7 @@ export default function ProductDetailsCarousel({ product }) {
     <StyledThumbnailsContainer length={product.images.length}>
       <Carousel {...carouselSettings2} asNavFor={nav1} ref={carousel2}>
         {product.images.map((img, index) => (
-          <Image
+          <MuiImage
             key={img}
             disabledEffect
             alt="thumbnail"

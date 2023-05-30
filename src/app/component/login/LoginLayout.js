@@ -2,7 +2,7 @@ import React from "react";
 import { Typography, Stack } from "@mui/material";
 
 import Logo from "../logo";
-import Image from "../image";
+import MuiImage from "../MuiImage";
 
 import {
   StyledRoot,
@@ -31,7 +31,7 @@ export default function LoginLayout({ children, illustration, title }) {
           {title || "Hi, Welcome back"}
         </Typography>
 
-        <Image
+        <MuiImage
           disabledEffect
           visibleByDefault
           alt="auth"

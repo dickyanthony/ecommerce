@@ -26,6 +26,7 @@ import {
   ProductDetailsReview,
   ProductDetailsCarousel,
 } from "../../../component/details";
+import palette from "../../../theme/palette";
 // ----------------------------------------------------------------------
 
 const SUMMARY = [
@@ -156,9 +157,8 @@ export default function detailproduct() {
                       height: 64,
                       mx: "auto",
                       borderRadius: "50%",
-                      color: "primary.main",
-                      bgcolor: (theme) =>
-                        `${alpha(theme.palette.primary.main, 0.08)}`,
+                      color: `${palette.primary.main}`,
+                      bgcolor: `${alpha(palette.primary.main, 0.08)}`,
                     }}
                   >
                     <Iconify icon={item.icon} width={36} />
@@ -168,7 +168,7 @@ export default function detailproduct() {
                     {item.title}
                   </Typography>
 
-                  <Typography sx={{ color: "text.secondary" }}>
+                  <Typography sx={{ color: `${palette.text.secondary}` }}>
                     {item.description}
                   </Typography>
                 </Box>
